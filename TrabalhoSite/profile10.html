@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Inicial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Ícones de redes sociais -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Favicon-->
+    <link rel="icon" href="pesquisa.png" type="image/x-icon">
+
+    <style>
+        body {
+            background-color: #f4f4f9;
+        }
+
+        .link-botao {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: transparent;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        header,
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .btn-custom {
+            background-color: #5564eb;
+            color: white;
+        }
+
+        .social-icons img {
+            margin: 0 10px;
+        }
+
+        .profile-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #5564eb;
+        }
+
+        .btn-sair {
+            margin-top: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ffffff;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer h4 {
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #eee;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            color: inherit;
+            font-size: 18px;
+        }
+
+        /* Adicionando cor ao passar o mouse */
+        .social-icons a:hover {
+            color: #ffa500;
+            /* Cor laranja para o hover */
+            transform: scale(1.15);
+        }
+
+        .social-icons i {
+            margin-right: 8px;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            opacity: 0.8;
+        }
+
+        nav {
+            position: relative;
+            /* Define o elemento de navegação como o contexto para o movimento */
+        }
+
+        /* Classe para mover o Link 1 */
+
+        /* Classe para mover o Link 2 */
+        .move-link2 {
+            position: absolute;
+            top: -4px;
+            /* Movimenta 150px para baixo */
+            left: 150px;
+            /* Movimenta 150px para a direita */
+            text-decoration: none;
+            /* Remove o sublinhado */
+            font-family: 'Roboto', sans-serif;
+            /* Fonte Roboto */
+            font-size: 20px;
+            /* Tamanho da fonte */
+            margin-right: 40px;
+            /* Espaço à direita do Link 2 */
+        }
+
+        /* Classe para mover o Link 3 */
+        .move-link3 {
+            position: absolute;
+            top: -4px;
+            /* Movimenta 250px para baixo */
+            left: 250px;
+            /* Movimenta 250px para a direita */
+            text-decoration: none;
+            /* Remove o sublinhado */
+            font-family: 'Roboto', sans-serif;
+            /* Fonte Roboto */
+            font-size: 20px;
+            /* Tamanho da fonte */
+            margin-right: 40px;
+            /* Adiciona 30px de espaço à direita do Link 1 */
+        }
+
+        /* Estilo geral da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin-top: 0px;
+        }
+
+        .container {
+            max-width: 1140px;
+        }
+
+        .accordion-item {
+            border-radius: 10px;
+            margin-bottom: 25px;
+            /* Espaçamento entre os acordeões */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .accordion-button {
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            /* Centraliza o título do acordeão */
+        }
+
+        .accordion-button:hover {
+            background-color: #0056b3;
+            /* Cor ao passar o mouse */
+            transform: scale(1.05);
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .accordion-body {
+            padding: 20px;
+            font-size: 1.1rem;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            color: #333;
+            text-align: center;
+            /* Centraliza o texto dentro do corpo do acordeão */
+        }
+
+        .accordion-header {
+            padding: 0;
+        }
+
+        .col-md-4 {
+            padding-left: 11;
+            padding-right: 11;
+        }
+
+        .bg-primary,
+        .bg-success,
+        .bg-danger {
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .accordion-header button {
+            font-weight: bold;
+        }
+
+        /* Estilo para o título da página */
+        .page-title {
+            /* Define o tamanho da fonte como 2.5 vezes o tamanho base da fonte */
+            font-size: 2.5rem;
+
+            /* Define o peso da fonte para negrito (700) */
+            font-weight: 700;
+
+            /* Adiciona uma margem inferior de 50 pixels */
+            margin-bottom: 50px;
+
+            /* Centraliza o texto horizontalmente */
+            text-align: center;
+
+            /* Define a cor do texto como um tom escuro de cinza (#333) */
+            color: #333;
+        }
+
+        /* Centralizar os títulos dos acordeões */
+        .accordion-header h2 {
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .col-md-4 {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Centralizar o container */
+        .profile-card {
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        /* Estilo da imagem do perfil */
+        .profile-image {
+            width: 50%;
+            max-width: 250px;
+            height: auto;
+            margin: 0 auto 15px;
+            /* Centraliza e adiciona margem inferior */
+            display: block;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            /* Remove o efeito circular */
+        }
+
+        /* Centralizar o nome e o texto "Aluno" */
+        .card-title,
+        .card-text {
+            text-align: center;
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Lista de habilidades */
+        .profile-skills {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .profile-skills li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Botões */
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #showProfile {
+            background-color: #007bff;
+            color: #fff;
+            margin: 20px auto;
+            /* Centraliza o botão */
+            display: block;
+        }
+
+        #hideProfile {
+            background-color: #dc3545;
+            color: #fff;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header class="d-flex justify-content-between align-items-center p-4 text-light">
+
+            <!-- Navegação com links movidos manualmente -->
+            <nav>
+                <a href="#" class="link-light move-link1" style="margin-right: 20px;"></a><!--Desativado-->
+                <a href="noticias.html" class="link-light move-link2" style="margin-right: 20px;"></a>
+                <a href="#" class="link-light move-link3" style="margin-right: 20px;"></a>
+            </nav>
+
+        </header>
+
+        <!-- Dropdown menu -->
+        <div class="row mt-4">
+            <div class="col">
+                <div class="dropdown">
+
+                    <button class="btn btn-warning position-absolute" data-bs-toggle="dropdown" aria-expanded="false"
+                        style="top: -83px; left: 15px;">
+                        
+                            <i class="fa-solid fa-house"></i> HOME
+                    
+                    </button>
+                    <!--conteudo do menu-->
+                    <ul class="dropdown-menu">
+
+                        <a href="profile_carrocel.html" class="dropdown-item">
+                            <i class="fa-solid fa-code"></i>Trabalhos
+                        </a>
+
+                        <a href="faleconosco.html" class="dropdown-item">
+                            <i class="fa-solid fa-phone"></i> Fale Conosco
+                        </a>
+
+                        <a href="formulario_de_cadastro.html" class="dropdown-item">
+                            <i class="fa-solid fa-user"></i> Formulario De Cadastro
+                        </a>
+
+                        <a href="galeria_de_imagem.html" class="dropdown-item">
+                            <i class="fa-regular fa-images"></i> Galeria de Imagem
+                        </a>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <a href="logout.html" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <!-- Exibição inicial -->
+                    <div id="initialView">
+                        <img class="profile-image" src="Foto.jpg" alt="Foto do Perfil">
+                        <h4 class="card-title">Marco Antonio Scarminio</h4>
+                        <p class="card-text">Aluno</p>
+                    </div>
+
+                    <!-- Botão "Ver Perfil" centralizado -->
+                    <button id="showProfile" class="btn">Ver Perfil</button>
+
+                    <!-- Cartão do Perfil -->
+                    <div id="profile" class="profile-card" style="display: none;">
+                        <h4>Sobre Mim</h4>
+                        <p>Olá! Meu nome é Marco Antonio Scarminio. Sou aluno de Engenharia de Computação, apaixonado
+                            por
+                            tecnologia e sempre buscando aprender mais sobre desenvolvimento web e outras áreas da
+                            computação.
+                        </p>
+
+                        <h4>Habilidades</h4>
+                        <ul class="profile-skills">
+                            <li>Desenho Técnico</li>
+                            <li>Implantação de Serviços de Inteligência Artificial em Nuvem - Microsoft AI-900</li>
+                            <li>Java Fundamentals ORACLE</li>
+                            <li>Programação em Python</li>
+                        </ul>
+                        <!-- Botão "Sair do Perfil" -->
+                        <button id="hideProfile" class="btn">Sair do Perfil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Accordion -->
+        <br>
+        <div class="container">
+            <div class="row">
+                <!-- Acordeão da Esquerda -->
+                <div class="col-md-4 mb-4">
+                    <div class="accordion" id="accordionLeft">
+                        <div class="accordion-item bg-primary text-white">
+                            <h2 class="accordion-header" id="titulo1">
+                                <button class="accordion-button text-white" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#area1">
+                                    Sobre Mim
+                                </button>
+                            </h2>
+                            <div id="area1" class="accordion-collapse collapse" data-bs-parent="#accordionLeft">
+                                <div class="accordion-body">
+                                    Olá! Meu nome é Marco Antonio Scarminio. Sou aluno de Engenharia de Computação,
+                                    apaixonado por tecnologia e sempre buscando aprender mais sobre desenvolvimento web
+                                    e outras áreas da computação.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Acordeão do Meio -->
+                <div class="col-md-4 mb-4">
+                    <div class="accordion" id="accordionMiddle">
+                        <div class="accordion-item bg-primary text-white">
+                            <h2 class="accordion-header" id="titulo2">
+                                <button class="accordion-button text-white" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#area2">
+                                    Habilidades
+                                </button>
+                            </h2>
+                            <div id="area2" class="accordion-collapse collapse" data-bs-parent="#accordionMiddle">
+                                <div class="accordion-body">
+                                    • Desenho Técnico<br>
+                                    • Implantação de Serviços de Inteligência Artificial em Nuvem - Microsoft AI-900<br>
+                                    • Java Fundamentals ORACLE<br>
+                                    • Programação em Python
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acordeão da Direita -->
+                <div class="col-md-4 mb-4">
+                    <div class="accordion" id="accordionRight">
+                        <div class="accordion-item  bg-primary text-white">
+                            <h2 class="accordion-header" id="titulo3">
+                                <button class="accordion-button text-white" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#area3">
+                                    Formação
+                                </button>
+                            </h2>
+                            <div id="area3" class="accordion-collapse collapse" data-bs-parent="#accordionRight">
+                                <div class="accordion-body">
+                                    Engenharia da Computação<br>
+                                    Faculdade Galileu<br>
+                                    Fevereiro de 2021 - Previsão de Conclusão: Dezembro de 2026
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+
+        <footer class="text-center w-100" style="position: absolute; bottom: 0; margin-bottom: 0;">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i> </a>
+                <a href="https://mail.google.com/"><i class="bi bi-envelope"></i> </a>
+                <a href="https://web.whatsapp.com/"><i class="bi bi-whatsapp"></i> </a>
+            </div>
+            <p class="footer-text mt-3">2024 Marco Antonio Scarminio. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+    <!-- Bootstrap JS & Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gyb3kR+65iBqCZSL7f0NfgcF1tptdGrT3HRT9+8HUPuJkOmoB5"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-rbsA2VBK4S0ZNUdOrjG0S1eIqkPt+HdEJ7l+NHvN1pF5C0w2M3I2chPzMHqg0U8x"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script>
+        // Referências aos elementos
+        const showProfileButton = document.getElementById('showProfile');
+        const hideProfileButton = document.getElementById('hideProfile');
+        const profileCard = document.getElementById('profile');
+        const initialView = document.getElementById('initialView');
+        // Mostrar o perfil completo
+        showProfileButton.addEventListener('click', () => {
+            profileCard.style.display = 'block';
+            initialView.style.display = 'none';
+            showProfileButton.style.display = 'none';
+        });
+        // Ocultar o perfil completo e mostrar a visão inicial
+        hideProfileButton.addEventListener('click', () => {
+            profileCard.style.display = 'none';
+            initialView.style.display = 'block';
+            showProfileButton.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

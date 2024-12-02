@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Favicon-->
+    <link rel="icon" href="pesquisa.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .logout-container {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .logout-container h1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .logout-container p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            font-size: 18px;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #1cc88a;
+            outline: none;
+        }
+
+        .logout-button {
+            background-color: #5564eb;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .logout-button:hover {
+            background-color: #5564eb;
+            transform: translateY(-4px);
+        }
+
+        .logout-button i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .forgot-password {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .logout-container {
+                padding: 30px;
+            }
+
+            .logout-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logout-container">
+        <h1>Logout</h1>
+        <p>Digite suas credenciais para sair.</p>
+        <form action="logout_action.html" method="POST">
+            <input type="email" name="email" class="input-field" placeholder="E-mail" required>
+            <input type="password" name="senha" class="input-field" placeholder="Senha" required>
+            <button type="submit" class="logout-button">
+                <i class=""></i> Sair <!-- botao Sair inacabado -->
+            </button>
+        </form>
+        <div class="forgot-password">
+            <a href="">Esqueceu a senha?</a><!-- esqueceu a senha inacabado -->
+        </div>
+    </div>
+</body>
+
+</html>

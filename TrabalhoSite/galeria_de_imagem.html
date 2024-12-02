@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!--Favicon-->
+    <link rel="icon" href="pesquisa.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f7f8fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Carrossel */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            margin-bottom: 40px;
+            background: #000;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            border-radius: 20px;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Título da Galeria */
+        .gallery-title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .gallery-title:hover {
+            color: #3498db;
+            transform: translateY(-5px);
+        }
+
+        /* Grid da Galeria */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Imagens da Galeria */
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Efeitos de Animação */
+        .gallery-item img {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Carrossel de Imagens -->
+        <div id="carousel" class="carousel"></div>
+
+        <!-- Título da Galeria -->
+        <h1 class="gallery-title">Galeria de Imagens</h1>
+
+        <!-- Galeria de Imagens -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://i1.wp.com/emotioncard.com.br/wp-content/uploads/2019/05/paisagem36.jpg?fit=1600%2C900&ssl=1"
+                    alt="Imagem 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://5287aa00874a313e299d-1850966fc307ff23e1e789aeafd2476b.ssl.cf5.rackcdn.com/PostImagem/34245/fotos-de-paisagens_o1f9f43uqg1iol1u491f86mpq19gse.jpg"
+                    alt="Imagem 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37182af0-55d3-464b-8583-63a8bc8a953e/dfj0db3-8a1ce8fd-7719-4ce5-b65c-e868b707c884.jpg/v1/fill/w_622,h_350,q_70,strp/img_20221013_142855_hd_by_evento22_dfj0db3-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MSIsInBhdGgiOiJcL2ZcLzM3MTgyYWYwLTU1ZDMtNDY0Yi04NTgzLTYzYThiYzhhOTUzZVwvZGZqMGRiMy04YTFjZThmZC03NzE5LTRjZTUtYjY1Yy1lODY4YjcwN2M4ODQuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.nfyaV3gYqq4f1XggLhtauDZe0srtU_ZfQo0VJ2Shdtk"
+                    alt="Imagem 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://th.bing.com/th/id/R.b25e151eae9fad85cfd65779d7e75279?rik=7XotlbmGJkpDFg&pid=ImgRaw&r=0"
+                    alt="Imagem 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://www.todoestudo.com.br/wp-content/uploads/2015/03/cataratas-do-iguacu1.jpg"
+                    alt="Imagem 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://th.bing.com/th/id/R.c9eade376add3065ef2ce5cc854d2833?rik=tMrMyT0w%2bIOuxw&pid=ImgRaw&r=0"
+                    alt="Imagem 6">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class Carousel {
+            constructor(elementId, images, interval = 3000) {
+                this.container = document.getElementById(elementId);
+                this.images = images;
+                this.interval = interval;
+                this.currentSlide = 0;
+                this.initCarousel();
+                this.startCarousel();
+            }
+
+            initCarousel() {
+                this.images.forEach((imgSrc, index) => {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = `Carrossel ${index + 1}`;
+                    if (index === 0) img.classList.add('active');
+                    this.container.appendChild(img);
+                });
+                this.slides = this.container.querySelectorAll('img');
+            }
+
+            startCarousel() {
+                setInterval(() => {
+                    this.slides[this.currentSlide].classList.remove('active');
+                    this.currentSlide = (this.currentSlide + 1) % this.images.length;
+                    this.slides[this.currentSlide].classList.add('active');
+                }, this.interval);
+            }
+        }
+
+        const images = [
+            'https://todepassagem.clickbus.com.br/wp-content/uploads/2020/03/Cachoeiras-no-Brasil.jpg',
+            'https://i0.wp.com/toptripadventure.com.br/wp-content/uploads/2020/01/bomjesus.jpg?fit=1440%2C960&ssl=1',
+            'https://img.elo7.com.br/product/zoom/1749DA5/painel-floresta-2-5x1-5m-paineis-sublimacao.jpg',
+            'https://4.bp.blogspot.com/-GISAkZzGo9w/Vcti4ekQgFI/AAAAAAAAiKc/MxhbeuXVReI/s1600/IMG_6944.jpg',
+        ];
+
+        new Carousel('carousel', images);
+    </script>
+</body>
+
+</html>
